@@ -4,3 +4,4 @@ type Query
 #import faculty.graphqls
 #import study_model.graphqls
 #import year.graphqls
+#import group.graphqls

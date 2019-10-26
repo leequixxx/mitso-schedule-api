@@ -20,7 +20,7 @@ interface MitsoYearBuilder
     public function withNumber(int $number): MitsoYearBuilder;
 
     /**
-     * Build instance of <b>MitsoYear</b>
+     * Build instance of <b>MitsoYear</b>.
      * @return MitsoYear instance
      */
     public function build(): MitsoYear;

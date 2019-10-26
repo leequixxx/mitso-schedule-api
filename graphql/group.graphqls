@@ -1,0 +1,14 @@
+type Group {
+    name: String!
+    title: String!
+
+    year: Year! @belongsTo
+}
+
+extend type Query {
+    groups(
+        faculty: String! @rules(apply: ["required", "string", "exists:faculties,name"]) @cacheKey,
+        studyModel: String! @rules(apply: ["required", "string", "exists:study_models,name"]) @cacheKey,
+        year: String! @rules(apply: ["required", "string", "exists:years,name"]) @cacheKey
+    ): [Group!]! @cache(maxAge: 2592000)
+}

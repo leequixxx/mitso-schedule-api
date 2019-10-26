@@ -42,11 +42,11 @@ class HtmlMitsoYearsParser implements MitsoYearsParser
             $dom->loadStr($html);
             $faculties = $dom->find(self::YEARS_SELECTOR);
 
-            return array_map(function (AbstractNode $facultyNode) {
-                $number = $facultyNode->text();
+            return array_map(function (AbstractNode $yearNode) {
+                $number = $yearNode->text();
                 $number = explode(' ', $number)[0];
 
-                return $this->yearBuilder->withName($facultyNode->getAttribute('value'))->withNumber($number)->build();
+                return $this->yearBuilder->withName($yearNode->getAttribute('value'))->withNumber($number)->build();
             }, $faculties->toArray());
         } catch(Exception $e) {
             throw new FailedToParseYearsFetchedDataException($e->getMessage(), $e->getCode(), $e);

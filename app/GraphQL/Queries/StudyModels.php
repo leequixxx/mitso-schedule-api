@@ -94,7 +94,7 @@ class StudyModels implements Resolver
      * Log error and returns exception.
      * @param string $message
      * @param Faculty $faculty
-     * @return Collection of faculties
+     * @return Collection of study models
      * @throws Exception on study_models table is empty
      */
     private function onError(string $message, Faculty $faculty): Collection {

@@ -90,7 +90,7 @@ class Years implements Resolver
      * Log error and returns exception.
      * @param string $message
      * @param StudyModel $studyModel
-     * @return Collection of faculties
+     * @return Collection of years
      * @throws Exception on years table is empty
      */
     private function onError(string $message, StudyModel $studyModel): Collection {
