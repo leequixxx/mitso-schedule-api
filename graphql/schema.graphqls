@@ -1,0 +1,6 @@
+type Query
+
+#import version.graphqls
+#import faculty.graphqls
+#import study_model.graphqls
+#import year.graphqls

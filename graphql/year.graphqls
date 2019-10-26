@@ -1,0 +1,10 @@
+type Year {
+    name: String!
+    number: Int!
+
+    studyModels: [StudyModel!]! @belongsToMany
+}
+
+extend type Query {
+    years(faculty: String! @rules(apply: ["required", "string", "exists:faculties,name"]) @cacheKey, studyModel: String! @rules(apply: ["required", "string", "exists:study_models,name"]) @cacheKey): [Year!]! @cache(maxAge: 2592000)
+}

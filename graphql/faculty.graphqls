@@ -1,0 +1,10 @@
+type Faculty {
+    name: String!
+    title: String!
+
+    studyModels: [StudyModel!]! @belongsToMany
+}
+
+extend type Query {
+    faculties: [Faculty!]! @cache(maxAge: 2592000)
+}

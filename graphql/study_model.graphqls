@@ -1,0 +1,10 @@
+type StudyModel {
+    name: String!
+    title: String!
+
+    faculties: [Faculty!]! @belongsToMany
+}
+
+extend type Query {
+    studyModels(faculty: String! @rules(apply: ["required", "string", "exists:faculties,name"]) @cacheKey): [StudyModel!]! @cache(maxAge: 2592000)
+}
