@@ -16,6 +16,10 @@ use App\Services\MitsoService\MitsoYearsProvider\BaseMitsoYearsProvider;
 use App\Services\MitsoService\MitsoYearsProvider\MitsoYearsProvider;
 use App\Services\MitsoService\MitsoYearsProvider\Fetcher\MitsoYearsFetcher;
 use App\Services\MitsoService\MitsoYearsProvider\Parser\MitsoYearsParser;
+use App\Services\MitsoService\MitsoGroupsProvider\BaseMitsoGroupsProvider;
+use App\Services\MitsoService\MitsoGroupsProvider\MitsoGroupsProvider;
+use App\Services\MitsoService\MitsoGroupsProvider\Fetcher\MitsoGroupsFetcher;
+use App\Services\MitsoService\MitsoGroupsProvider\Parser\MitsoGroupsParser;
 
 class MitsoProvider extends ServiceProvider
 {
@@ -29,6 +33,7 @@ class MitsoProvider extends ServiceProvider
         $this->registerFacultiesProvider();
         $this->registerStudyModelsProvider();
         $this->registerYearsProvider();
+        $this->registerGroupsProvider();
     }
 
     /**
@@ -114,6 +119,32 @@ class MitsoProvider extends ServiceProvider
              * @var MitsoYearsProvider $provider
              */
             $provider = $app->make(MitsoYearsProvider::class);
+
+            return $provider->createParser();
+        });
+    }
+
+    private function registerGroupsProvider()
+    {
+        $this->app->bind(BaseMitsoGroupsProvider::class, function () {
+            return new BaseMitsoGroupsProvider();
+        });
+        $this->app->bind(MitsoGroupsProvider::class, BaseMitsoGroupsProvider::class);
+
+        $this->app->bind(MitsoGroupsFetcher::class, function (Application $app) {
+            /**
+             * @var MitsoGroupsProvider $provider
+             */
+            $provider = $app->make(MitsoGroupsProvider::class);
+
+            return $provider->createFetcher();
+        });
+
+        $this->app->bind(MitsoGroupsParser::class, function (Application $app) {
+            /**
+             * @var MitsoGroupsProvider $provider
+             */
+            $provider = $app->make(MitsoGroupsProvider::class);
 
             return $provider->createParser();
         });

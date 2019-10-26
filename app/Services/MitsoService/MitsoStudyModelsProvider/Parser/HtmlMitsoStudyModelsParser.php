@@ -43,8 +43,8 @@ class HtmlMitsoStudyModelsParser implements MitsoStudyModelsParser
             $dom->loadStr($html);
             $faculties = $dom->find(self::STUDY_MODELS_SELECTOR);
 
-            return array_map(function (AbstractNode $facultyNode) {
-                return $this->studyModelBuilder->withName($facultyNode->getAttribute('value'))->withTitle($facultyNode->text())->build();
+            return array_map(function (AbstractNode $studyModelNode) {
+                return $this->studyModelBuilder->withName($studyModelNode->getAttribute('value'))->withTitle($studyModelNode->text())->build();
             }, $faculties->toArray());
         } catch(Exception $e) {
             throw new FailedToParseStudyModelsFetchedDataException($e->getMessage(), $e->getCode(), $e);

@@ -3,6 +3,7 @@ type StudyModel {
     title: String!
 
     faculties: [Faculty!]! @belongsToMany
+    years: [Year!]! @belongsToMany
 }
 
 extend type Query {

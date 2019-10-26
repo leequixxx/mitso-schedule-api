@@ -3,6 +3,7 @@ type Year {
     number: Int!
 
     studyModels: [StudyModel!]! @belongsToMany
+    groups: [Group!]! @hasMany
 }
 
 extend type Query {

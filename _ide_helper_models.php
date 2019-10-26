@@ -12,6 +12,25 @@
 
 namespace App{
 /**
+ * App\Day
+ *
+ * @property int $id
+ * @property \Illuminate\Support\Carbon $date
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Day newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Day newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Day query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Day whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Day whereDate($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Day whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Day whereUpdatedAt($value)
+ */
+	class Day extends \Eloquent {}
+}
+
+namespace App{
+/**
  * App\Faculty
  *
  * @property string $name
@@ -48,10 +67,28 @@ namespace App{
 
 namespace App{
 /**
+ * App\Group
+ *
+ * @property string $name
+ * @property string $title
+ * @property-read \App\Year $year
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Group newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Group newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Group query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Group whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Group whereTitle($value)
+ */
+	class Group extends \Eloquent {}
+}
+
+namespace App{
+/**
  * App\Year
  *
  * @property string $name
  * @property int $number
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Group[] $groups
+ * @property-read int|null $groups_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\StudyModel[] $studyModels
  * @property-read int|null $study_models_count
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Year newModelQuery()
@@ -61,24 +98,5 @@ namespace App{
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Year whereNumber($value)
  */
 	class Year extends \Eloquent {}
-}
-
-namespace App{
-/**
- * App\Day
- *
- * @property int $id
- * @property \Illuminate\Support\Carbon $date
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Day newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Day newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Day query()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Day whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Day whereDate($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Day whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Day whereUpdatedAt($value)
- */
-	class Day extends \Eloquent {}
 }
 
